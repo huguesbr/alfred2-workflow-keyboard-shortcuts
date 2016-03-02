@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>3F047974-2D48-4894-A75A-317F6D1CD9E0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5598A89E-2CD9-4777-A46D-3BEA4AC3B988</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C6CDED83-3231-4749-9C9D-EE46CD6376BB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3F047974-2D48-4894-A75A-317F6D1CD9E0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Hugues Bernet-Rollande</string>
+	<key>description</key>
+	<string>Add keyboard text replacement shortcuts</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Keyboard Text Shortcuts</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>keyboard</string>
+				<key>subtext</key>
+				<string>Type in your shortcut followed by comma and then the replacement text</string>
+				<key>text</key>
+				<string>Add a text input shortcuts</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C6CDED83-3231-4749-9C9D-EE46CD6376BB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}\nRelaunch any app to see changes</string>
+				<key>title</key>
+				<string>Keyboard shortcut added</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>5598A89E-2CD9-4777-A46D-3BEA4AC3B988</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>(shortcut, replacement) = "{query}".split(',')
+replacement.strip!
+command = "defaults write -g NSUserDictionaryReplacementItems -array-add '{on=1;replace=#{shortcut};with=\"#{replacement}\";}'"
+%x( #{command} )
+puts "#{shortcut} -&gt; #{replacement}"</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3F047974-2D48-4894-A75A-317F6D1CD9E0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Easily add OS X keyboard text replacement shortcuts (System Preferences / Keyboard / Text) from Alfred</string>
+	<key>uidata</key>
+	<dict>
+		<key>3F047974-2D48-4894-A75A-317F6D1CD9E0</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>5598A89E-2CD9-4777-A46D-3BEA4AC3B988</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>C6CDED83-3231-4749-9C9D-EE46CD6376BB</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://xdev.fr</string>
+</dict>
+</plist>
